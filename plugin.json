@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Misc",
+  "FriendlyName": "CacheLookup",
+  "SystemName": "Nop.Plugin.Misc.CacheLookup",
+  "Version": "1.00",
+  "SupportedVersions": [ "4.30" ],
+  "Author": "yuessir",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Misc.CacheLookup.dll",
+  "Description": "see https://github.com/yuessir/Nop.Plugin.Misc.CacheLookup"
+}

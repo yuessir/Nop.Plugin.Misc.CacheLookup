@@ -1,0 +1,62 @@
+﻿@using Nop.Web.Framework.Models.DataTables
+@using Nop.Plugin.Misc.CacheLookup.Areas.Admin.Model
+@{
+    Layout = "_ConfigurePlugin";
+}
+
+<div class="content">
+    <div class="form-horizontal">
+        <div class="panel-group">
+
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            @await Html.PartialAsync("Table", new DataTablesModel
+                   {
+                       Name = "cache-grid",
+                       UrlRead = new DataUrl("CacheItems", "CacheLookup", null),
+                       UrlDelete = new DataUrl("DeleteCacheItem", "CacheLookup", null),
+                       BindColumnNameActionDelete = nameof(CacheItemModel.Key),
+                       SearchButtonId = "search-key",
+                       Length = 15,
+                       LengthMenu = "15",
+
+                       ColumnCollection = new List<ColumnProperty>
+                       {
+
+                           new ColumnProperty(nameof(CacheItemModel.Key))
+                           {
+                               Title = T("Key").Text
+                           },
+                           new ColumnProperty(nameof(CacheItemModel.Value))
+                           {
+                               Title = T("Value").Text
+                           }
+                           ,new ColumnProperty(nameof(CacheItemModel.Size))
+                           {
+                               Title = T("Size in bytes").Text
+                           },
+                            new ColumnProperty(nameof(CacheItemModel.ExpiryDate))
+                           {
+                               Title = T("ExpiryDate(local time)").Text
+                           },
+
+                           new ColumnProperty(nameof(CacheItemModel.Key))
+                           {
+                               Title = T("Admin.Common.Edit").Text,
+                               Width = "100",
+                               Render = new RenderButtonRemove(T("Admin.Common.Delete").Text),
+                               ClassName = NopColumnClassDefaults.Button
+                           }
+                       }
+                   })
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
